@@ -2,12 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Space, Table, Tag } from "antd";
 
 const api = "https://localhost:7015/api/";
+const serverUrl = "https://localhost:7015";
 
 const columns = [
   {
     title: "#",
     dataIndex: "id",
     key: "id",
+  },
+  {
+    title: "Image",
+    dataIndex: "imgUrl",
+    key: "image",
+    render: (_, item) => (
+      <img height="50" src={serverUrl + item.imgUrl} alt={item.title} />
+    ),
   },
   {
     title: "Title",
