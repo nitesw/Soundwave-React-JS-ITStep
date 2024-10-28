@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Breadcrumb, Layout as LayoutAnt, Menu, theme } from "antd";
 import {
   HomeOutlined,
@@ -6,25 +6,40 @@ import {
   MenuOutlined,
 } from "@ant-design/icons";
 import MusicTable from "./MusicTable";
+import { Link, Outlet, useLocation } from "react-router-dom";
 const { Header, Content, Footer } = LayoutAnt;
 const items = [
   {
-    key: 1,
+    key: "/",
     label: "Home",
-    icon: <HomeOutlined />,
+    icon: (
+      <Link to="/">
+        <HomeOutlined />
+      </Link>
+    ),
   },
   {
-    key: 2,
+    key: "/music",
     label: "Music",
-    icon: <MenuOutlined />,
+    icon: (
+      <Link to="/music">
+        <MenuOutlined />
+      </Link>
+    ),
   },
   {
-    key: 3,
+    key: "/about",
     label: "About",
-    icon: <InfoCircleOutlined />,
+    icon: (
+      <Link to="/about">
+        <InfoCircleOutlined />
+      </Link>
+    ),
   },
 ];
 const Layout = () => {
+  const [current] = useState(useLocation().pathname);
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -40,7 +55,7 @@ const Layout = () => {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["1"]}
+          defaultSelectedKeys={[current]}
           items={items}
           style={{
             flex: 1,
@@ -64,7 +79,7 @@ const Layout = () => {
             borderRadius: borderRadiusLG,
           }}
         >
-          <MusicTable />
+          <Outlet />
         </div>
       </Content>
 

@@ -1,0 +1,14 @@
+.home-page-headers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home-page-headers h1 {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+.home-page-headers h2 {
+  margin-top: 0;
+  color: gray;
+  font-weight: 600;
+}
