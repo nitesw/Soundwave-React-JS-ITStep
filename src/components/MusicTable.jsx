@@ -5,6 +5,7 @@ import {
   EditOutlined,
   InfoCircleOutlined,
 } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const api = "https://localhost:7015/api/";
 const serverUrl = "https://localhost:7015";
@@ -70,11 +71,13 @@ const MusicTable = () => {
       key: "action",
       render: (_, record) => (
         <Space size="middle">
-          <Button
-            color="primary"
-            variant="filled"
-            icon={<InfoCircleOutlined />}
-          />
+          <Link to={`/music/${record.id}`}>
+            <Button
+              color="primary"
+              variant="filled"
+              icon={<InfoCircleOutlined />}
+            />
+          </Link>
           <Button color="default" variant="filled" icon={<EditOutlined />} />
           <Popconfirm
             title="Delete the track"
