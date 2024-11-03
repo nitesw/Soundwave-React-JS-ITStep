@@ -38,7 +38,12 @@ const items = [
   },
 ];
 const Layout = () => {
-  const [current] = useState(useLocation().pathname);
+  const location = useLocation();
+  const [current] = useState(() => {
+    return location.pathname.startsWith("/music")
+      ? "/music"
+      : location.pathname;
+  });
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -51,7 +56,7 @@ const Layout = () => {
           alignItems: "center",
         }}
       >
-        <div className="demo-logo" />
+        <div />
         <Menu
           theme="dark"
           mode="horizontal"

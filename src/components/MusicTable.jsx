@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, message, Popconfirm, Space, Table, Tag } from "antd";
 import {
+  AppstoreAddOutlined,
   DeleteOutlined,
   EditOutlined,
   InfoCircleOutlined,
@@ -78,7 +79,9 @@ const MusicTable = () => {
               icon={<InfoCircleOutlined />}
             />
           </Link>
-          <Button color="default" variant="filled" icon={<EditOutlined />} />
+          <Link to={`/music/edit/${record.id}`}>
+            <Button color="default" variant="filled" icon={<EditOutlined />} />
+          </Link>
           <Popconfirm
             title="Delete the track"
             description={`Are you sure you want to delete ${record.title}?`}
@@ -101,10 +104,33 @@ const MusicTable = () => {
       });
   }, []);
   const deleteItem = (id) => {
-    setMusic(music.filter((x) => x.id !== id));
-    message.success("Track deleted successfuly!");
+    fetch(api + "music/delete?id=" + id, {
+      method: "DELETE",
+    }).then((res) => {
+      if (res.status === 200) {
+        setMusic(music.filter((x) => x.id !== id));
+        message.success("Track deleted successfuly!");
+      } else {
+        message.error("Something went wrong!");
+      }
+    });
   };
 
-  return <Table columns={columns} dataSource={music} rowKey="id" />;
+  return (
+    <>
+      <Link to="/music/create">
+        <Button
+          color="primary"
+          icon={<AppstoreAddOutlined />}
+          variant="filled"
+          style={{ marginBottom: "16px" }}
+        >
+          Create new track
+        </Button>
+      </Link>
+
+      <Table columns={columns} dataSource={music} rowKey="id" />
+    </>
+  );
 };
 export default MusicTable;

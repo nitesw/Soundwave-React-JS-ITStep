@@ -5,6 +5,8 @@ import Home from "./components/Home";
 import MusicTable from "./components/MusicTable";
 import About from "./components/About";
 import TrackInfo from "./components/TrackInfo";
+import CreateTrack from "./components/CreateTrack";
+import EditTrack from "./components/EditTrack";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="music" element={<MusicTable />} />
+          <Route path="music/create" element={<CreateTrack />} />
+          <Route path="music/edit/:id" element={<EditTrack />} />
           <Route path="music/:id" element={<TrackInfo />} />
           <Route path="about" element={<About />} />
         </Route>
