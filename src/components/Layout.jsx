@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Breadcrumb, Layout as LayoutAnt, Menu, theme } from "antd";
 import {
   HomeOutlined,
   InfoCircleOutlined,
   MenuOutlined,
+  StarOutlined,
 } from "@ant-design/icons";
 import MusicTable from "./MusicTable";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import { MusicContext } from "../contexts/music.context";
 const { Header, Content, Footer } = LayoutAnt;
 const items = [
   {
@@ -28,6 +30,15 @@ const items = [
     ),
   },
   {
+    key: "/favourites",
+    label: "Favourites",
+    icon: (
+      <Link to="/favourites">
+        <StarOutlined />
+      </Link>
+    ),
+  },
+  {
     key: "/about",
     label: "About",
     icon: (
@@ -38,6 +49,8 @@ const items = [
   },
 ];
 const Layout = () => {
+  const { count } = useContext(MusicContext);
+
   const location = useLocation();
   const [current] = useState(() => {
     return location.pathname.startsWith("/music")
@@ -67,6 +80,7 @@ const Layout = () => {
             minWidth: 0,
           }}
         />
+        <span style={{ color: "white" }}>Favourites: {count}</span>
       </Header>
 
       <Content

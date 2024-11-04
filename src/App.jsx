@@ -7,6 +7,7 @@ import About from "./components/About";
 import TrackInfo from "./components/TrackInfo";
 import CreateTrack from "./components/CreateTrack";
 import EditTrack from "./components/EditTrack";
+import Favourites from "./components/Favourites";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="music/create" element={<CreateTrack />} />
           <Route path="music/edit/:id" element={<EditTrack />} />
           <Route path="music/:id" element={<TrackInfo />} />
+          <Route path="favourites" element={<Favourites />} />
           <Route path="about" element={<About />} />
         </Route>
       </Routes>
