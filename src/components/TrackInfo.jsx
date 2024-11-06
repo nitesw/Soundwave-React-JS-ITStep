@@ -3,8 +3,8 @@ import { Button, Flex, Image, Skeleton, Space, Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const api = "https://localhost:7015/api/";
-const serverUrl = "https://localhost:7015";
+const api = "https://soudnwave-web-api.azurewebsites.net/api/";
+const serverUrl = "https://soudnwave-web-api.azurewebsites.net";
 
 export default function TrackInfo() {
   const [item, setItem] = useState(null);

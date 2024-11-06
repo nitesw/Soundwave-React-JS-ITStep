@@ -18,8 +18,8 @@ import {
 import { Link } from "react-router-dom";
 import { MusicContext } from "../contexts/music.context";
 
-const api = "https://localhost:7015/api/";
-const serverUrl = "https://localhost:7015";
+const api = "https://soundwave-web-api.azurewebsites.net/api/";
+const serverUrl = "https://soundwave-web-api.azurewebsites.net";
 
 const MusicTable = () => {
   const { count, setCount, ids, addId, removeId } = useContext(MusicContext);

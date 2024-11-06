@@ -4,8 +4,8 @@ import { InfoCircleOutlined, StarOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { MusicContext } from "../contexts/music.context";
 
-const api = "https://localhost:7015/api/";
-const serverUrl = "https://localhost:7015";
+const api = "https://soundwave-web-api.azurewebsites.net/api/";
+const serverUrl = "https://soundwave-web-api.azurewebsites.net";
 export default function Favourites() {
   const { count, setCount, ids, setIds, addId, removeId } =
     useContext(MusicContext);

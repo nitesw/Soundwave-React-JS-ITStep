@@ -13,7 +13,7 @@ import {
 import { useNavigate } from "react-router-dom";
 const { TextArea } = Input;
 
-const api = "https://localhost:7015/api/";
+const api = "https://soundwave-web-api.azurewebsites.net/api/";
 
 const CreateTrack = () => {
   const navigate = useNavigate();
